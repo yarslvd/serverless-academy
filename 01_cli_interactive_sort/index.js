@@ -7,7 +7,7 @@ class Cli {
   constructor() {
     this.input = [];
     this.words = [];
-    this.digets = [];
+    this.numbers = [];
     this.readline = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
@@ -18,7 +18,7 @@ class Cli {
   #clearData() {
     this.input = [];
     this.words = [];
-    this.digets = [];
+    this.numbers = [];
   }
 
   // perform option based on input
@@ -35,17 +35,17 @@ class Cli {
             : this.#wordsError
         );
         break;
-      case "2": // sorting digets from the smallest
+      case "2": // sorting numbers from the smallest
         console.log(
-          this.digets.length !== 0
-            ? this.digets.sort((a, b) => a - b)
+          this.numbers.length !== 0
+            ? this.numbers.sort((a, b) => a - b)
             : this.#digitsError
         );
         break;
-      case "3": // sorting digets from the biggest
+      case "3": // sorting numbers from the biggest
         console.log(
-          this.digets.length !== 0
-            ? this.digets.sort((a, b) => b - a)
+          this.numbers.length !== 0
+            ? this.numbers.sort((a, b) => b - a)
             : this.#digitsError
         );
         break;
@@ -80,9 +80,9 @@ class Cli {
 
   // separating input into words and digits
   #separateInput(input) {
-    this.input = input.split(" ");
+    this.input = input.trim().split(" ").filter((el) => el.length >= 1);
     this.input.forEach((el) => {
-      if (!isNaN(+el)) this.digets.push(+el);
+      if (!isNaN(+el)) this.numbers.push(+el);
       else this.words.push(el);
     });
   }
@@ -116,6 +116,11 @@ class Cli {
     });
 
     if (input) {
+      if(input === 'exit') {
+        console.log("\nGoodbye! Come back again!\n");
+        this.readline.close();
+        return;
+      }
       try {
         this.#separateInput(input);
         this.choooseOption();
