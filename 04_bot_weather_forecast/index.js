@@ -50,7 +50,6 @@ async function get3HrsWeather(message) {
       reply_markup: {
         inline_keyboard: [
           [{ text: "Show on map", callback_data: "get_map" }],
-          [{ text: "Update", callback_data: "get_3hrs" }],
           [{ text: "Back", callback_data: "get_forecast" }],
         ],
       },
@@ -79,7 +78,6 @@ async function get6HrsWeather(message) {
       reply_markup: {
         inline_keyboard: [
           [{ text: "Show on map", callback_data: "get_map" }],
-          [{ text: "Update", callback_data: "get_3hrs" }],
           [{ text: "Back", callback_data: "get_forecast" }],
         ],
       },
