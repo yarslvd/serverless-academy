@@ -30,7 +30,6 @@ const uniqueValues = () => {
         const fileStream = fs.createReadStream(filePath);
         const rl = readline.createInterface({
           input: fileStream,
-          crlfDelay: Infinity,
         });
         const unique = new Set();
         const was = new Set();
@@ -77,7 +76,6 @@ const existInAllFiles = () => {
         const fileStream = fs.createReadStream(filePath);
         const rl = readline.createInterface({
           input: fileStream,
-          crlfDelay: Infinity,
         });
 
         const usernamesInFile = new Set();
